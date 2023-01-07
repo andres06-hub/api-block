@@ -1,5 +1,5 @@
 import { Field, InputType } from '@nestjs/graphql';
-import { IsNotEmpty, IsString, MaxLength } from 'class-validator';
+import { IsInt, IsNotEmpty, IsString, MaxLength } from 'class-validator';
 
 @InputType() //Para convertirlo a una entrada
 // Detallar que datos espera recibir este Objeto
@@ -17,4 +17,10 @@ export class DataPostInput {
   @MaxLength(400)
   @Field({ nullable: true })
   content?: string;
+
+  @IsInt({
+    message: 'authorId must be Int',
+  })
+  @Field()
+  authorId: number;
 }
