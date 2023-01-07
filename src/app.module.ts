@@ -6,6 +6,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { join } from 'node:path';
+import { AuthorsModule } from './authors/authors.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { join } from 'node:path';
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
     }),
     PostsModule,
+    AuthorsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
